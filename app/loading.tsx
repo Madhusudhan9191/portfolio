@@ -1,0 +1,1 @@
+export default function Loading(){return <div className="flex min-h-[70vh] items-center justify-center"><div className="flex items-center gap-3"><span className="h-3 w-3 animate-pulse rounded-full bg-[var(--primary)]"/><span className="mono text-xs" style={{color:"var(--text-dim)"}}>Loading the workspace…</span></div></div>}

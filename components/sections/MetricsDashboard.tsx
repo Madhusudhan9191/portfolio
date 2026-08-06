@@ -1,0 +1,4 @@
+"use client";
+import { motion } from "framer-motion";
+const metrics=[ ["20+","APIs & services"],["100+","GitHub commits"],["1+","Years experience"],["2","IEEE papers"],["10+","Projects shipped"],["35+","Technologies"] ];
+export default function MetricsDashboard(){return <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{metrics.map(([value,label],i)=><motion.div key={label} initial={{opacity:0,y:12}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*.05}} className="surface rounded-2xl p-6"><div className="text-4xl font-semibold text-gradient">{value}</div><div className="mono mt-2 text-xs" style={{color:"var(--text-dim)"}}>{label}</div><motion.div className="mt-5 h-1 rounded-full" style={{background:"var(--primary)"}} initial={{width:0}} whileInView={{width:`${55+i*7}%`}} viewport={{once:true}}/></motion.div>)}</div>}
