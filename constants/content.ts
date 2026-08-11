@@ -166,34 +166,36 @@ export const PROJECTS: Project[] = [
     index: "01",
     name: "RepoMind AI",
     tagline:
-      "A personal project: an enterprise-grade RAG platform that enables intelligent question answering over software repositories and technical documentation.",
+      "An enterprise-grade hybrid RAG platform that enables intelligent, cited question answering over multi-language software repositories and technical documentation.",
     problem:
       "Engineers lose hours navigating large, unfamiliar codebases and scattered documentation just to answer questions a teammate could answer in seconds — if they were available.",
     solution:
-      "A retrieval-augmented generation platform that ingests an entire repository, indexes it semantically, and answers technical questions with cited, streamed responses.",
+      "A retrieval-augmented generation platform that ingests multi-language repositories, indexes them with hybrid dense + lexical search, and delivers cited, streamed answers with sub-35ms retrieval latency.",
     challenges: [
-      "Chunking source code in a way that preserves logical structure instead of splitting mid-function",
-      "Balancing retrieval recall against prompt size once repositories grew past thousands of files",
-      "Keeping conversational context coherent across multi-turn technical questions",
+      "Chunking multi-language source code in a way that preserves AST logical boundaries instead of splitting mid-function",
+      "Merging dense vector recall with exact symbol/keyword lexical matching across repository-scale codebases",
+      "Ingesting large repositories incrementally without spending compute re-embedding unchanged files",
     ],
     decisions: [
-      "Used MMR retrieval to reduce redundant chunks before reranking",
-      "Added a cross-encoder reranking stage to prioritize precision over raw recall",
-      "Applied context compression so only the most relevant spans reach the LLM prompt",
+      "Built a Hybrid Chunking Engine combining Python AST parsers with language-aware sliding line windows for JS, TS, React, MD, JSON, and YAML",
+      "Implemented Candidate Union combining Qdrant dense vector search with in-memory Okapi BM25 lexical search",
+      "Applied explicit hybrid reranking (dense + BM25 + code symbol overlap) and line-level context compression lowering prompt token cost by ~28%",
+      "Created an SHA-256 incremental hash manifest skipping unchanged files with automatic vector deletion sync",
     ],
     lessons:
-      "Reranking mattered more than embedding model choice — precision at the top of the retrieved set is what determines answer quality.",
-    tech: ["FastAPI", "React", "Sentence Transformers", "Qdrant", "Docker", "Nginx", "JWT"],
-    pipeline: [{ label: "Repository" }, { label: "Parser" }, { label: "Chunking" }, { label: "Embeddings" }, { label: "Vector DB" }, { label: "MMR Retriever" }, { label: "Cross Encoder" }, { label: "Context Compression" }, { label: "LLM" }, { label: "Answer" }],
+      "Precision at the top of the candidate set matters more than raw embedding model scale — combining lexical symbol matching with dense vectors drastically improves code RAG quality.",
+    tech: ["FastAPI", "React", "Qdrant", "Okapi BM25", "Sentence Transformers", "Docker", "Nginx", "JWT"],
+    pipeline: [{ label: "Repository" }, { label: "SHA-256 Hashing" }, { label: "Hybrid Chunking" }, { label: "Qdrant Vector DB" }, { label: "BM25 Search" }, { label: "Hybrid Reranker" }, { label: "Context Compression" }, { label: "Streaming LLM" }, { label: "Cited Answer" }],
     features: [
-      "Full repository ingestion with AST-based structure-aware chunking",
-      "MMR retrieval plus cross-encoder reranking for precision answers",
-      "NAT-safe sliding-window rate limiter keyed by user ID with IP fallback",
-      "SSE token streaming with keepalive loops and graceful thread teardowns",
+      "Hybrid Multi-Language Code Chunking Engine (Python AST + line-sliding window for JS/TS/MD/YAML/JSON/Dockerfiles)",
+      "Candidate Union combining Qdrant dense vector search with Okapi BM25 lexical keyword matching",
+      "Explicit hybrid reranking scoring formula combining dense similarity, BM25 scores, and code symbol overlap",
+      "SHA-256 incremental hash manifest skipping unchanged files with automatic Qdrant vector deletion sync",
+      "Quantitative evaluation framework measuring Precision@5, Recall@5, MRR, and context compression",
     ],
     metrics: [
-      { value: "9-stage", label: "Retrieval & generation pipeline" },
-      { value: "Streaming", label: "Token-level response delivery" },
+      { value: "<35ms", label: "Hybrid retrieval latency" },
+      { value: "9-stage", label: "Retrieval & evaluation pipeline" },
     ],
     github: "https://github.com/Madhusudhan9191/RepoMindAI",
     accent: "secondary",
@@ -203,7 +205,7 @@ export const PROJECTS: Project[] = [
     index: "02",
     name: "Enterprise AI Database Assistant",
     tagline:
-      "A personal project: an AI-powered analytics platform that converts natural language into SQL queries and generates business insights across 3 database engines.",
+      "An AI-powered analytics platform that converts natural language into SQL queries and generates business insights across 3 database engines.",
     problem:
       "Business teams needed answers from PostgreSQL and Oracle databases but depended entirely on engineers to write every query — a bottleneck that slowed decisions down to a crawl.",
     solution:
@@ -237,8 +239,45 @@ export const PROJECTS: Project[] = [
     accent: "primary",
   },
   {
-    slug: "property-research-agent",
+    slug: "ab-test-workbench",
     index: "03",
+    name: "A/B Test Analysis Workbench",
+    tagline:
+      "A reproducible statistical experimentation engine and dual-presentation dashboard (Power BI + Streamlit) implementing CUPED, Welch t-tests, and Monte Carlo peeking simulations.",
+    problem:
+      "Product teams often misinterpret A/B test results due to underpowered tests, false-positive inflation from daily peeking, or uncaptured secondary metric regressions.",
+    solution:
+      "A statistical experimentation workbench built on simulated e-commerce data with known ground truth, featuring CUPED variance reduction, power calculations, pre-registered subgroup analysis, and Difference-in-Differences causal inference.",
+    challenges: [
+      "Validating CUPED variance reduction without biasing treatment effect estimates",
+      "Demonstrating false-positive rate inflation under daily peeking Monte Carlo trials",
+      "Structuring clean star-schema relational exports for interactive Power BI dashboards",
+    ],
+    decisions: [
+      "Used pre-period average daily revenue as the CUPED covariate before random assignment",
+      "Built DuckDB SQL aggregations to convert daily customer panels into analysis-ready tables",
+      "Created a 6-page interactive Power BI star schema model with DAX measures alongside a Streamlit developer viewer",
+    ],
+    lessons:
+      "CUPED delivers tighter confidence intervals rather than forcing identical point estimates — theta estimation noise is natural in finite samples. Repeated peeking inflates false-positive rates by over 4x under a true null effect.",
+    tech: ["Python", "Pandas", "NumPy", "DuckDB", "Statsmodels", "SciPy", "Power BI", "Streamlit", "Pytest"],
+    pipeline: [{ label: "Daily Panel" }, { label: "DuckDB SQL" }, { label: "Power Analysis" }, { label: "CUPED Adj" }, { label: "Welch t-test" }, { label: "Monte Carlo Peeking" }, { label: "Star Schema CSVs" }, { label: "Power BI" }],
+    features: [
+      "CUPED variance reduction achieving ~7.8% outcome variance reduction without extra sample cost",
+      "Monte Carlo peeking simulation demonstrating 4.2x false-positive rate inflation (from 5.3% to 21.1%)",
+      "Guardrail testing and pre-registered subgroup analysis over pre-period revenue terciles",
+      "Difference-in-Differences and Synthetic Control causal inference module for non-randomized rollouts",
+    ],
+    metrics: [
+      { value: "~7.8%", label: "Variance reduction via CUPED" },
+      { value: "4.2x", label: "False-positive inflation from peeking" },
+    ],
+    github: "https://github.com/Madhusudhan9191/AB-Test-Analysis-Workbench",
+    accent: "primary",
+  },
+  {
+    slug: "property-research-agent",
+    index: "04",
     name: "Property Research Agent",
     tagline:
       "An autonomous AI agent that researches, analyzes, and ranks property listings using web search and LLM reasoning.",
@@ -275,7 +314,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "heart-rate-estimation",
-    index: "04",
+    index: "05",
     name: "Real-Time Heart Rate Estimation from Facial Video",
     tagline:
       "A research project estimating heart rate from facial video using remote photoplethysmography — published in IEEE.",

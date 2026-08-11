@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Search, CornerDownLeft } from "lucide-react";
 import { NAV_ITEMS, PROJECTS } from "@/constants/content";
 
-const ITEMS = [{ label: "Home", href: "/" }, ...NAV_ITEMS, { label: "Metrics dashboard", href: "/metrics" }, { label: "Career timeline", href: "/timeline" }, { label: "Certifications", href: "/certifications" }, { label: "Achievements", href: "/achievements" }, ...PROJECTS.map(project => ({ label: `Project: ${project.name}`, href: `/projects/${project.slug}` })), { label: "Architecture: RepoMind AI", href: "/architecture/repomind-ai" }, { label: "Architecture: AI Database Assistant", href: "/architecture/ai-database-assistant" }, { label: "Architecture: CHAKRA", href: "/architecture/chakra" }, { label: "Architecture: IT Ticket Automation", href: "/architecture/it-ticket-automation" }];
+const ITEMS = [{ label: "Home", href: "/" }, ...NAV_ITEMS, { label: "Metrics dashboard", href: "/metrics" }, { label: "Career timeline", href: "/timeline" }, { label: "Certifications", href: "/certifications" }, { label: "Achievements", href: "/achievements" }, ...PROJECTS.map(project => ({ label: `Project: ${project.name}`, href: `/projects/${project.slug}` })), { label: "Architecture: RepoMind AI", href: "/architecture/repomind-ai" }, { label: "Architecture: AI Database Assistant", href: "/architecture/ai-database-assistant" }, { label: "Architecture: A/B Test Analysis Workbench", href: "/architecture/ab-test-workbench" }, { label: "Architecture: CHAKRA", href: "/architecture/chakra" }, { label: "Architecture: IT Ticket Automation", href: "/architecture/it-ticket-automation" }];
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);
