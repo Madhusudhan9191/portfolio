@@ -39,7 +39,7 @@ export const NAV_ITEMS: NavItem[] = [
 export const STATS: StatItem[] = [
   { value: 2, suffix: "+", label: "Years professional backend experience" },
   { value: 1000, suffix: "+", label: "Users served in production" },
-  { value: 4, suffix: "", label: "Personal AI projects shipped" },
+  { value: 8, suffix: "+", label: "Personal systems & analytical products shipped" },
   { value: 2, suffix: "", label: "IEEE research publications" },
   { value: 20, suffix: "+", label: "Technologies" },
 ];
@@ -147,6 +147,9 @@ export const SKILLS: SkillNode[] = [
   { name: "NumPy", group: "data", description: "Numerical computing foundation." },
   { name: "PySpark", group: "data", description: "Distributed data processing." },
   { name: "Power BI", group: "data", description: "Business intelligence dashboards." },
+  { name: "Tableau", group: "data", description: "Interactive executive BI analytics and LOD scenario simulation." },
+  { name: "DuckDB", group: "database", description: "High-performance analytical in-process SQL engine." },
+  { name: "LightGBM", group: "ai", description: "High-performance gradient boosting for tabular ML and risk ranking." },
   { name: "Excel", group: "data", description: "Rapid analysis and reporting." },
   { name: "Matplotlib", group: "data", description: "Data visualization." },
 ];
@@ -347,6 +350,200 @@ export const PROJECTS: Project[] = [
       { value: "68–80%", label: "Accuracy across 200+ samples" },
     ],
     demo: "https://ieeexplore.ieee.org/abstract/document/10080014/",
+    accent: "primary",
+  },
+  {
+    slug: "electricity-demand-forecasting",
+    index: "06",
+    name: "Day-Ahead Electricity Demand Forecasting with Conformal Uncertainty",
+    tagline:
+      "An offline machine learning forecasting and rolling conformal calibration system across TEX (ERCOT), MIDA (PJM), and NY (NYISO) grid footprints with a 3-way Tableau reconciliation engine.",
+    problem:
+      "System operators require day-ahead 24-hour load forecasts committed at 10:00 AM on Day D-1 (forcing all demand lags to be >= 48h to prevent look-ahead leakage) and calibrated prediction intervals that maintain empirical coverage under extreme weather events and multi-year load growth.",
+    solution:
+      "Engineered an offline gradient-boosted forecasting pipeline refit on 26,280 hours across 2021–2023 and evaluated on a single-touch Calendar 2024 holdout (8,784 hrs/region), paired with rolling conformal prediction ribbons and a programmatic 3-way reconciliation audit between Python, SQLite, and Tableau Desktop.",
+    challenges: [
+      "Strict operational lead-time: forcing all autoregressive demand lags to >= 48 hours to prevent future information leakage at the 10:00 AM D-1 forecast origin",
+      "Structural tree extrapolation failure in high-growth grids like Texas (+18% 4-year growth) causing persistent negative model bias",
+      "Conformal interval coverage degradation under seasonal weather volatility and extreme winter freeze events (Winter Storm Uri & Elliott)",
+    ],
+    decisions: [
+      "Formulated and reported both HistGradientBoosting_Point_Conformal and a level-anchored Residual model side-by-side on the 2024 holdout with full protocol disclosure",
+      "Implemented 21-day rolling conformal prediction to adapt interval width to current volatility, achieving 76.7%–79.3% holdout coverage in nominal 80% band",
+      "Engineered population-weighted multi-city ERA5 weather features and Fourier harmonic diurnal/weekly seasonality terms",
+      "Built an automated 3-layer reconciliation engine independently querying Python, SQLite, and Tableau Desktop exports to verify 9/9 operational metrics with zero manual entry",
+    ],
+    lessons:
+      "Evaluating models against weak 168-hour seasonal naive baselines masks structural limitations — recent-origin 48h naive baselines prove much harder to beat in rapidly expanding grids (+20% skill margin in Texas vs +60% in Mid-Atlantic and New York).",
+    tech: ["Python", "scikit-learn", "LightGBM", "Conformal Prediction", "Tableau", "SQLite", "DuckDB", "Open-Meteo ERA5"],
+    pipeline: [
+      { label: "EIA-930 + ERA5" },
+      { label: "Point-in-Time Lags (>=48h)" },
+      { label: "Fourier Seasonality" },
+      { label: "Rolling Backtest (2023)" },
+      { label: "Refit (26,280h)" },
+      { label: "Holdout (2024)" },
+      { label: "Conformal Ribbon" },
+      { label: "3-Way Reconciliation" },
+    ],
+    features: [
+      "Multi-region day-ahead hourly forecasting across TEX (ERCOT), MIDA (PJM), and NY (NYISO) footprints",
+      "Point-in-time safe feature pipeline enforcing >=48h minimum lag to eliminate forecast origin leakage",
+      "Rolling conformal prediction intervals providing dynamic volatility-adaptive ribbons (80% & 95% nominal)",
+      "Counterfactual weather sensitivity stress testing (+2°C & +5°C) evaluated against model baseline (ΔT=0)",
+      "Programmatic 3-way reconciliation pipeline verifying Python, SQL, and Tableau UI metrics with zero manual entry",
+    ],
+    metrics: [
+      { value: "2,784 MW", label: "TEX Holdout MAE" },
+      { value: "76.7%–79.3%", label: "Calibrated 80% Coverage" },
+      { value: "9 / 9 PASS", label: "3-Way Reconciliation" },
+    ],
+    github: "https://github.com/Madhusudhan9191/electricity-demand-forecasting",
+    accent: "primary",
+  },
+  {
+    slug: "olist-delay-risk-ml",
+    index: "07",
+    name: "E-Commerce Delivery Delay Risk Model & Operational Early-Warning System",
+    tagline:
+      "Point-in-time carrier-handover machine learning classifier and Power BI operational dispatch queue predicting late delivery probabilities on 99K orders.",
+    problem:
+      "In an e-commerce marketplace, late deliveries erode customer satisfaction and drive churn. Operations and logistics support teams have finite bandwidth: they cannot manually track or escalate all outbound shipments and need early scoring at the exact moment of carrier handover.",
+    solution:
+      "An end-to-end classification system using LightGBM and isotonic calibration with point-in-time features strictly observable at carrier handover, deployed to an interactive Power BI operational dashboard with priority dispatch queues, SHAP explainability, and rolling drift monitoring.",
+    challenges: [
+      "Preventing future look-ahead leakage by strictly isolating signals available at the carrier handover timestamp",
+      "Extreme class imbalance (~6.7% late delivery base rate) requiring precision-recall optimization over standard accuracy",
+      "Model probability calibration drift across expanding regional logistics corridors and seasonal holiday volume surges",
+    ],
+    decisions: [
+      "Trained and tuned LightGBM with cost-sensitive threshold tuning optimizing F2-score to prioritize recall of at-risk orders",
+      "Applied Isotonic Probability Calibration achieving a Brier score of 0.042 and near-perfect alignment across risk deciles",
+      "Computed TreeSHAP values for global and local explainability, surfacing freight distance, promised buffer, and seller transit history as top drivers",
+      "Exported calibrated scores and risk tiers to Power BI with priority queueing and automated monthly feature drift monitoring",
+    ],
+    lessons:
+      "Uncalibrated raw model probabilities lead to false operational alerts — calibrating probabilities to empirical risk deciles transforms ML scores into trusted, actionable priority queues for logistics dispatchers.",
+    tech: ["Python", "LightGBM", "SHAP", "scikit-learn", "Power BI", "DAX", "DuckDB", "Pandas"],
+    pipeline: [
+      { label: "Kaggle Olist 99K" },
+      { label: "Handover Cutoff" },
+      { label: "Feature Engineering" },
+      { label: "LightGBM Classifier" },
+      { label: "Isotonic Calibration" },
+      { label: "SHAP Explainer" },
+      { label: "Risk Tiers" },
+      { label: "Power BI Queue" },
+    ],
+    features: [
+      "Point-in-time safe feature pipeline isolating handling time, handover slack, route distance, and historical seller reliability",
+      "Isotonically calibrated risk scoring with threshold optimization for operations team capacity constraints",
+      "Interactive Power BI 6-page operational suite featuring dispatch triage queue, regional risk maps, and model card",
+      "SHAP attribution waterfall explaining top risk factors for individual at-risk customer shipments",
+      "Automated data drift and performance monitoring tracking monthly prevalence, PSI, and Brier score stability",
+    ],
+    metrics: [
+      { value: "0.892", label: "ROC-AUC Score" },
+      { value: "0.042", label: "Calibrated Brier Score" },
+      { value: "6.7% → 78%", label: "High-Risk Tier Precision" },
+    ],
+    github: "https://github.com/Madhusudhan9191/03_PowerBI_Olist_Delay_Risk_ML",
+    accent: "secondary",
+  },
+  {
+    slug: "olist-delivery-analytics",
+    index: "08",
+    name: "Olist E-Commerce Delivery Performance & Customer Satisfaction Analytics",
+    tagline:
+      "Comprehensive analytical data product and Power BI executive intelligence suite investigating SLA penalties, regional bottlenecks, and review score impacts across 99K orders.",
+    problem:
+      "Marketplace leadership lacked empirical clarity on how logistics bottlenecks, seller fulfillment delays, and inflated delivery promises impact customer satisfaction and repeat purchase retention across Brazilian states.",
+    solution:
+      "Architected a dimensional data warehouse (Star Schema) in SQL/DuckDB, authored 63 auditable DAX measures, tested four formal business hypotheses with statistical rigor, and delivered an executive Power BI reporting suite with 3-way reconciliation.",
+    challenges: [
+      "Complex multi-table order, item, payment, and review lifecycle data with asynchronous review submission timing",
+      "Separating carrier transit delays from seller handling delays across vast interstate shipping corridors",
+      "Ensuring 100% calculation integrity between raw SQL aggregations, Python data profiling, and Power BI DAX measures",
+    ],
+    decisions: [
+      "Constructed a certified Kimball star schema with 5 dimensions and 3 fact tables (delivery, items, payments)",
+      "Tested H1–H4 hypotheses proving late delivery incurs a -1.82 star review penalty, with reviews submitted pre-delivery biasing unadjusted metrics",
+      "Authored 63 fully documented DAX measures validated through an automated test harness against DuckDB control totals",
+      "Designed a 4-page responsive Power BI report covering executive KPIs, delivery performance, regional corridors, and satisfaction drivers",
+    ],
+    lessons:
+      "Timing of review collection creates massive survivorship bias: customers reviewing orders before arrival award 4.3 stars, but post-arrival delayed orders drop to 2.2 stars — controlling for review timing is critical for honest customer sentiment analytics.",
+    tech: ["Power BI", "DAX", "SQL", "PostgreSQL", "DuckDB", "Python", "Power Query M"],
+    pipeline: [
+      { label: "Olist Raw CSVs" },
+      { label: "Data Profiling" },
+      { label: "Star Schema DWH" },
+      { label: "SQL Hypothesis Engine" },
+      { label: "DAX Measures (63)" },
+      { label: "3-Way Reconciliation" },
+      { label: "Power BI Suite" },
+    ],
+    features: [
+      "Certified Kimball star schema modeling 99,441 orders with audited referential integrity and zero orphan records",
+      "Hypothesis testing engine evaluating SLA penalties, state mix adjustments, seller cohorts, and freight burden",
+      "Interactive 4-page Power BI executive suite with dynamic decomposition trees, corridor heatmaps, and cohort analysis",
+      "63 production DAX measures verified with an automated evaluation script against database ground truth",
+      "Comprehensive analytical documentation including KPI dictionary, data lineage, and interview defense guide",
+    ],
+    metrics: [
+      { value: "-1.82★", label: "Late delivery review penalty" },
+      { value: "63 / 63", label: "DAX measures reconciled" },
+      { value: "99,441", label: "Audited marketplace orders" },
+    ],
+    github: "https://github.com/Madhusudhan9191/02_PowerBI_Olist_Delivery_Analytics",
+    accent: "accent",
+  },
+  {
+    slug: "retail-sales-profitability-analytics",
+    index: "09",
+    name: "Retail Sales & Discount Profitability Analysis with What-If Simulator",
+    tagline:
+      "End-to-end retail commercial analytics and interactive Tableau dashboard investigating discount margins, category leakage, and dynamic price-realisation scenarios.",
+    problem:
+      "High-revenue retail categories frequently generate net negative operating margins due to unchecked volume discounting, yet merchants lack visibility into where discounting erodes margin versus where it stimulates profitable basket volume.",
+    solution:
+      "Engineered a PostgreSQL analytics warehouse and interactive Tableau Desktop executive dashboard suite featuring automated SQL validation audits (34/34 checks passing) and a dynamic What-If discount scenario simulator.",
+    challenges: [
+      "Detecting unprofitable product segments masked by high top-line revenue aggregation",
+      "Modeling customer price elasticity and discount sensitivity without proprietary historical pricing tiers",
+      "Creating an intuitive executive simulator allowing commercial teams to test discount caps and forecast recovered margin in real time",
+    ],
+    decisions: [
+      "Built a multi-tier PostgreSQL data model validating order, return, and regional totals against independent control checks",
+      "Identified critical margin leakage in high-discount office supplies (Tables & Bookcases incurring -$17K+ losses at >20% discount)",
+      "Implemented Tableau Level-of-Detail (LOD) calculations and dynamic parameters powering a 3-tier scenario simulator",
+      "Designed 3 responsive executive dashboards: Executive Overview, Product Profitability, and Discount Margin Simulator",
+    ],
+    lessons:
+      "Discount thresholds exhibit steep non-linear cliff effects: discounts up to 15% maintain healthy unit margins, but discounts exceeding 20% consistently destroy operating margin regardless of sales volume expansion.",
+    tech: ["Tableau", "PostgreSQL", "SQL", "Python", "Excel", "Data Modeling"],
+    pipeline: [
+      { label: "Superstore Raw" },
+      { label: "Independent Controls" },
+      { label: "PostgreSQL Schema" },
+      { label: "SQL Validation (34)" },
+      { label: "LOD Calculations" },
+      { label: "What-If Simulator" },
+      { label: "Tableau Suite" },
+    ],
+    features: [
+      "PostgreSQL retail warehouse schema with 34 automated data quality and referential integrity assertions",
+      "Granular profitability diagnosis exposing discount destruction thresholds across regions and customer segments",
+      "Interactive Tableau What-If Pricing Simulator testing discount adjustments and projecting recovered profit",
+      "Custom LOD expressions calculating customer lifetime margin, regional contribution ratios, and return rates",
+      "Comprehensive documentation including business requirements, scenario modeling formulas, and interview guide",
+    ],
+    metrics: [
+      { value: "34 / 34 PASS", label: "Automated SQL validations" },
+      { value: "+$42K", label: "Simulated profit recovery" },
+      { value: "3 Dashboards", label: "Executive Tableau suite" },
+    ],
+    github: "https://github.com/Madhusudhan9191/01_Tableau_Retail_Analytics",
     accent: "primary",
   },
 ];

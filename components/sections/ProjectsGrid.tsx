@@ -42,7 +42,7 @@ export default function ProjectsGrid() {
         return techLower.some((t) => t.includes("fastapi") || t.includes("python"));
       }
       if (activeFilter === "sql") {
-        return techLower.some((t) => t.includes("sql") || t.includes("postgresql") || t.includes("oracle") || t.includes("mysql"));
+        return techLower.some((t) => t.includes("sql") || t.includes("postgresql") || t.includes("oracle") || t.includes("mysql") || t.includes("tableau") || t.includes("power bi") || t.includes("duckdb"));
       }
       if (activeFilter === "vision") {
         return slug.includes("heart-rate") || techLower.some((t) => t.includes("opencv") || t.includes("fft") || t.includes("face"));
