@@ -112,8 +112,8 @@ export default function ProjectsGrid() {
               data-cursor-hover
               className={`mono inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium transition-all duration-200 border ${
                 isActive
-                  ? "border-[var(--primary)] bg-[rgba(213,255,63,0.12)] text-[var(--primary)] shadow-[0_0_15px_rgba(213,255,63,0.15)]"
-                  : "border-[var(--border)] bg-[var(--glass)] text-[var(--text-dim)] hover:border-[var(--border-strong)] hover:text-[var(--text)]"
+                  ? "border-blue-500/40 bg-blue-600/15 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)] font-semibold"
+                  : "border-[var(--border)] bg-[var(--glass)] text-[var(--text-dim)] hover:border-[var(--border-strong)] hover:text-white"
               }`}
             >
               <Icon size={14} className={isActive ? "text-[var(--primary)]" : "text-[var(--text-dimmer)]"} />

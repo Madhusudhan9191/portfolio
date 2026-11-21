@@ -27,10 +27,10 @@ export default function ResearchList() {
                 style={{ color: "var(--primary)" }}
               />
             </div>
-            <h3 className="mt-6 text-xl leading-snug group-hover:text-[var(--primary)] transition-colors">
+            <h3 className="mt-6 text-xl font-bold text-white leading-snug group-hover:text-blue-400 transition-colors">
               {pub.title}
             </h3>
-            <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--text-dim)" }}>
+            <p className="mt-3 text-sm leading-relaxed text-slate-300">
               {pub.blurb}
             </p>
             <div

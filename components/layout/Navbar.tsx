@@ -30,15 +30,18 @@ export default function Navbar() {
           "fixed top-0 left-0 right-0 z-[900] transition-all duration-300 border-b border-transparent",
           scrolled && "backdrop-blur-xl"
         )}
-        style={scrolled ? { background: "rgba(5,8,22,0.75)", borderColor: "var(--border)" } : undefined}
+        style={scrolled ? { background: "rgba(9, 13, 22, 0.85)", borderColor: "rgba(255, 255, 255, 0.1)" } : undefined}
       >
         <div className="mx-auto flex max-w-[1220px] items-center justify-between px-6 py-4 md:py-5">
-          <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight" data-cursor-hover>
+          <Link href="/" className="flex items-center gap-2 font-bold tracking-tight text-white text-base" data-cursor-hover>
             <span
-              className="h-[7px] w-[7px] rounded-full"
-              style={{ background: "var(--accent)", boxShadow: "0 0 12px var(--accent)" }}
+              className="h-[8px] w-[8px] rounded-full"
+              style={{ background: "#34d399", boxShadow: "0 0 10px #34d399" }}
             />
-            madhu<span style={{ color: "var(--text-dimmer)" }}>.dev</span>
+            <span>Sai Madhu Sudhan</span>
+            <span className="mono text-xs px-2 py-0.5 rounded border border-blue-500/30 bg-blue-500/10 text-blue-400 font-normal">
+              Portfolio
+            </span>
           </Link>
 
           <ul className="hidden items-center gap-1 lg:flex">
@@ -50,10 +53,11 @@ export default function Navbar() {
                     href={item.href}
                     data-cursor-hover
                     className={cn(
-                      "rounded-full px-3.5 py-2 text-[13px] transition-colors",
-                      isActive ? "text-[var(--bg)]" : "text-[var(--text-dim)] hover:text-[var(--text)]"
+                      "rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-all",
+                      isActive
+                        ? "bg-blue-600/20 text-blue-400 border border-blue-500/40 shadow-sm"
+                        : "text-slate-300 hover:text-white hover:bg-slate-800/40"
                     )}
-                    style={isActive ? { background: "var(--text)" } : undefined}
                   >
                     {item.label}
                   </Link>

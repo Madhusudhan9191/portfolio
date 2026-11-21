@@ -14,9 +14,9 @@ const ICONS = {
 };
 
 const ACCENTS = {
-  primary: "var(--primary)",
-  secondary: "var(--secondary)",
-  accent: "var(--accent)",
+  primary: "#38bdf8",
+  secondary: "#c084fc",
+  accent: "#34d399",
 };
 
 export default function DisciplinesShowcase() {
@@ -26,25 +26,32 @@ export default function DisciplinesShowcase() {
   const currentAccent = ACCENTS[current.accent];
 
   return (
-    <section className="py-24 relative" style={{ borderTop: "1px solid var(--border)" }}>
+    <section className="py-24 relative" style={{ borderTop: "1px solid var(--border)", background: "rgba(11, 15, 25, 0.6)" }}>
       <div className="mx-auto max-w-[1220px] px-6">
         <Reveal>
-          <div className="eyebrow mb-3 flex items-center gap-2">
-            <Layers size={14} style={{ color: "var(--primary)" }} />
-            <span>Three Pillars · Three Years of Production Impact</span>
+          <div className="mb-3.5 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold tracking-wider uppercase mono"
+            style={{
+              borderColor: "rgba(59, 130, 246, 0.3)",
+              background: "rgba(59, 130, 246, 0.08)",
+              color: "#60a5fa",
+            }}
+          >
+            <Layers size={13} />
+            <span>Core Disciplines · 3 Years of Enterprise Impact</span>
           </div>
-          <h2 className="text-[clamp(28px,4.5vw,52px)] font-bold tracking-tight">
+
+          <h2 className="text-[clamp(28px,4.5vw,50px)] font-bold tracking-tight text-white leading-tight">
             Data Science. AI Engineering.
             <br />
             <span className="text-gradient">Production Software.</span>
           </h2>
-          <p className="mt-4 max-w-2xl text-[16px]" style={{ color: "var(--text-dim)" }}>
+          <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-slate-300">
             Senior engineering leaders often struggle to find talent that bridges mathematical data science, modern LLM architectures, and battle-tested production backends. Here is how these three disciplines intersect in my work.
           </p>
         </Reveal>
 
         {/* Pillar Switcher Tabs */}
-        <div className="mt-12 flex flex-wrap gap-3">
+        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {DISCIPLINE_PILLARS.map((pillar, i) => {
             const TabIcon = ICONS[pillar.iconName as keyof typeof ICONS] || Brain;
             const isActive = activeTab === i;
@@ -56,28 +63,28 @@ export default function DisciplinesShowcase() {
                 type="button"
                 onClick={() => setActiveTab(i)}
                 data-cursor-hover
-                className="group relative flex items-center gap-3 rounded-2xl border px-5 py-3.5 text-left transition-all duration-300"
+                className="group relative flex items-center gap-3.5 rounded-2xl border p-4 text-left transition-all duration-300"
                 style={{
-                  borderColor: isActive ? accentColor : "var(--border)",
-                  background: isActive ? "rgba(255,255,255,0.04)" : "var(--glass)",
-                  boxShadow: isActive ? `0 0 24px -6px ${accentColor}40` : "none",
+                  borderColor: isActive ? accentColor : "rgba(255, 255, 255, 0.1)",
+                  background: isActive ? "rgba(15, 23, 42, 0.95)" : "rgba(15, 23, 42, 0.5)",
+                  boxShadow: isActive ? `0 0 25px -5px ${accentColor}35` : "none",
                 }}
               >
                 <div
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border transition-colors"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-colors"
                   style={{
-                    borderColor: isActive ? accentColor : "var(--border)",
-                    background: isActive ? `${accentColor}18` : "transparent",
-                    color: isActive ? accentColor : "var(--text-dim)",
+                    borderColor: isActive ? accentColor : "rgba(255, 255, 255, 0.12)",
+                    background: isActive ? `${accentColor}20` : "rgba(255, 255, 255, 0.03)",
+                    color: isActive ? accentColor : "#94a3b8",
                   }}
                 >
-                  <TabIcon size={18} />
+                  <TabIcon size={20} />
                 </div>
                 <div>
-                  <div className="mono text-[11px] font-medium tracking-wide uppercase" style={{ color: isActive ? accentColor : "var(--text-dimmer)" }}>
+                  <div className="mono text-[11px] font-bold tracking-wider uppercase" style={{ color: isActive ? accentColor : "#94a3b8" }}>
                     Pillar 0{i + 1}
                   </div>
-                  <div className="text-sm font-semibold" style={{ color: isActive ? "var(--text)" : "var(--text-dim)" }}>
+                  <div className="text-sm font-bold text-white mt-0.5">
                     {pillar.title}
                   </div>
                 </div>
@@ -87,7 +94,7 @@ export default function DisciplinesShowcase() {
         </div>
 
         {/* Active Pillar Card */}
-        <div className="mt-8">
+        <div className="mt-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={current.id}
@@ -95,50 +102,57 @@ export default function DisciplinesShowcase() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative overflow-hidden rounded-3xl border p-8 md:p-12"
+              className="relative overflow-hidden rounded-3xl border p-8 md:p-10 shadow-2xl"
               style={{
-                borderColor: "var(--border)",
-                background: "linear-gradient(170deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
+                borderColor: "rgba(255, 255, 255, 0.14)",
+                background: "linear-gradient(170deg, rgba(15, 23, 42, 0.95), rgba(11, 15, 25, 0.98))",
               }}
             >
               {/* Radial glow */}
               <div
-                className="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full opacity-15 blur-[100px]"
+                className="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full opacity-20 blur-[100px]"
                 style={{ background: currentAccent }}
               />
 
               <div className="grid gap-10 lg:grid-cols-12">
                 {/* Left col: Overview & Competencies */}
                 <div className="lg:col-span-7">
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-3">
                     <span
-                      className="mono text-xs font-semibold uppercase px-2.5 py-1 rounded-md border"
+                      className="mono text-xs font-bold uppercase px-3 py-1 rounded-md border"
                       style={{
-                        borderColor: `${currentAccent}40`,
-                        background: `${currentAccent}15`,
+                        borderColor: `${currentAccent}50`,
+                        background: `${currentAccent}18`,
                         color: currentAccent,
                       }}
                     >
                       {current.role}
                     </span>
-                    <span className="mono text-xs" style={{ color: "var(--text-dimmer)" }}>
+                    <span className="mono text-xs font-medium text-slate-400">
                       3 Years Continuous Delivery
                     </span>
                   </div>
 
-                  <h3 className="mt-4 text-2xl md:text-3xl font-bold leading-tight" style={{ color: "var(--text)" }}>
+                  <h3 className="mt-4 text-2xl md:text-3xl font-extrabold text-white leading-tight">
                     {current.tagline}
                   </h3>
 
                   <div className="mt-8">
-                    <h4 className="mono text-xs font-medium uppercase tracking-wider mb-4" style={{ color: "var(--text-dimmer)" }}>
-                      Key Engineering Competencies
+                    <h4 className="mono text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
+                      Core Technical Competencies
                     </h4>
                     <div className="grid gap-2.5 sm:grid-cols-1">
                       {current.competencies.map((comp) => (
-                        <div key={comp} className="flex items-start gap-3 rounded-xl border p-3 text-sm" style={{ borderColor: "var(--border)", background: "rgba(255,255,255,0.015)" }}>
-                          <CheckCircle2 size={16} className="mt-0.5 shrink-0" style={{ color: currentAccent }} />
-                          <span style={{ color: "var(--text)" }}>{comp}</span>
+                        <div
+                          key={comp}
+                          className="flex items-start gap-3 rounded-xl border p-3.5 text-sm text-slate-200"
+                          style={{
+                            borderColor: "rgba(255, 255, 255, 0.08)",
+                            background: "rgba(255, 255, 255, 0.03)",
+                          }}
+                        >
+                          <CheckCircle2 size={17} className="mt-0.5 shrink-0" style={{ color: currentAccent }} />
+                          <span className="font-medium">{comp}</span>
                         </div>
                       ))}
                     </div>
@@ -148,7 +162,7 @@ export default function DisciplinesShowcase() {
                 {/* Right col: Flagship Project Cards */}
                 <div className="lg:col-span-5 flex flex-col justify-between">
                   <div>
-                    <h4 className="mono text-xs font-medium uppercase tracking-wider mb-4" style={{ color: "var(--text-dimmer)" }}>
+                    <h4 className="mono text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
                       Flagship Shipped Implementations
                     </h4>
                     <div className="flex flex-col gap-3.5">
@@ -157,23 +171,30 @@ export default function DisciplinesShowcase() {
                           key={p.slug}
                           href={`/projects/${p.slug}`}
                           data-cursor-hover
-                          className="group relative flex flex-col justify-between rounded-2xl border p-5 transition-all hover:-translate-y-1"
+                          className="group relative flex flex-col justify-between rounded-2xl border p-5 transition-all duration-200 hover:-translate-y-1 hover:border-slate-500"
                           style={{
-                            borderColor: "var(--border)",
-                            background: "var(--glass)",
+                            borderColor: "rgba(255, 255, 255, 0.1)",
+                            background: "rgba(15, 23, 42, 0.7)",
                           }}
                         >
                           <div className="flex items-start justify-between gap-3">
-                            <span className="text-base font-semibold group-hover:text-[var(--primary)] transition-colors">
+                            <span className="text-base font-bold text-white group-hover:text-blue-400 transition-colors">
                               {p.name}
                             </span>
-                            <ArrowUpRight size={17} className="shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" style={{ color: currentAccent }} />
+                            <ArrowUpRight size={18} className="shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" style={{ color: currentAccent }} />
                           </div>
                           <div className="mt-3.5 flex items-center justify-between">
-                            <span className="mono text-xs font-medium" style={{ color: currentAccent }}>
+                            <span
+                              className="mono text-xs font-semibold px-2.5 py-0.5 rounded border"
+                              style={{
+                                borderColor: `${currentAccent}40`,
+                                background: `${currentAccent}12`,
+                                color: currentAccent,
+                              }}
+                            >
                               {p.metric}
                             </span>
-                            <span className="text-[12px] underline underline-offset-4" style={{ color: "var(--text-dim)" }}>
+                            <span className="text-[12px] font-medium text-slate-300 group-hover:underline underline-offset-4">
                               View Case Study →
                             </span>
                           </div>
@@ -182,14 +203,13 @@ export default function DisciplinesShowcase() {
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t" style={{ borderColor: "var(--border)" }}>
+                  <div className="mt-8 pt-6 border-t" style={{ borderColor: "rgba(255, 255, 255, 0.1)" }}>
                     <Link
                       href="/projects"
                       data-cursor-hover
-                      className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:text-[var(--primary)]"
-                      style={{ color: "var(--text)" }}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-blue-400"
                     >
-                      <Sparkles size={15} style={{ color: "var(--primary)" }} />
+                      <Sparkles size={16} className="text-blue-400" />
                       <span>Browse all 9 production projects with metrics →</span>
                     </Link>
                   </div>
