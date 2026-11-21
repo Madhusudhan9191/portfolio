@@ -22,7 +22,7 @@ const KPI_METRICS: KPIMetric[] = [
     value: 3,
     suffix: "+",
     label: "3+ Years",
-    sublabel: "Multi-Disciplinary Experience",
+    sublabel: "Cross-Discipline Impact",
     context: "Data Science, AI Systems & Production Software",
     icon: Briefcase,
     accent: "#38bdf8",
@@ -33,8 +33,8 @@ const KPI_METRICS: KPIMetric[] = [
     value: 1000,
     suffix: "+",
     label: "1,000+",
-    sublabel: "Production Users",
-    context: "Active enterprise users served at 99.9% SLA",
+    sublabel: "Active Production Users",
+    context: "Deployed enterprise microservices at 99.9% SLA",
     icon: Users,
     accent: "#34d399",
     borderAccent: "rgba(52, 211, 153, 0.25)",
@@ -62,25 +62,13 @@ const KPI_METRICS: KPIMetric[] = [
     borderAccent: "rgba(192, 132, 252, 0.25)",
     bgAccent: "rgba(192, 132, 252, 0.08)",
   },
-  {
-    value: 35,
-    prefix: "<",
-    suffix: "ms",
-    label: "<35ms",
-    sublabel: "Production Latency SLA",
-    context: "Sub-35ms vector retrieval & 0.892 ROC-AUC",
-    icon: Zap,
-    accent: "#fbbf24",
-    borderAccent: "rgba(251, 191, 36, 0.25)",
-    bgAccent: "rgba(251, 191, 36, 0.08)",
-  },
 ];
 
 export default function StatsBar() {
   return (
-    <section className="relative z-10 py-12" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "rgba(15, 23, 42, 0.4)" }}>
+    <section className="relative z-10 py-12" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "rgba(15, 23, 42, 0.45)" }}>
       <div className="mx-auto max-w-[1220px] px-6">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {KPI_METRICS.map((kpi, i) => {
             const Icon = kpi.icon;
             return (

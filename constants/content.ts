@@ -27,13 +27,12 @@ export const PERSONAL = {
 };
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: "About", href: "/about" },
-  { label: "Experience", href: "/experience" },
   { label: "Projects", href: "/projects" },
-  { label: "Hackathon", href: "/hackathon" },
+  { label: "Experience", href: "/experience" },
   { label: "Research", href: "/research" },
-  { label: "Resume", href: "/resume" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Resume", href: "/resume" },
 ];
 
 export const STATS: StatItem[] = [

@@ -83,15 +83,15 @@ export default function Navbar() {
             <Magnetic
               as="a"
               href="/contact"
-              className="rounded-full text-[13px] font-semibold"
-              style={{ background: "var(--text)", color: "var(--bg)", padding: "9px 18px" }}
+              className="rounded-full text-[13px] font-semibold text-white shadow-md transition-all hover:scale-105"
+              style={{ background: "var(--primary)", padding: "8px 18px" }}
             >
               Let&apos;s talk
             </Magnetic>
           </div>
 
           <button
-            className="p-2 lg:hidden"
+            className="p-2 lg:hidden text-white"
             aria-label="Open menu"
             onClick={() => setMobileOpen(true)}
             data-cursor-hover
@@ -109,7 +109,7 @@ export default function Navbar() {
             exit={{ y: "-100%" }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[950] flex flex-col items-center justify-center gap-7"
-            style={{ background: "rgba(5,8,22,0.98)", backdropFilter: "blur(20px)" }}
+            style={{ background: "rgba(9, 13, 22, 0.98)", backdropFilter: "blur(20px)" }}
           >
             <button
               className="absolute top-6 right-6 p-2"

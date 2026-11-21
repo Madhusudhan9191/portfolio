@@ -12,14 +12,15 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About"
+        eyebrow="About &amp; Engineering Philosophy"
         title={
           <>
-            Engineering systems that
+            Data Science with software rigor.
             <br />
-            reason, not just respond.
+            AI systems engineered to scale.
           </>
         }
+        description="3 years of engineering impact bridging statistical modeling, production LLM architectures, and battle-tested distributed backends."
       />
 
       <section className="pb-28">

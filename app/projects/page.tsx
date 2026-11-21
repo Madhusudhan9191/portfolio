@@ -10,15 +10,15 @@ export default function ProjectsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Personal Projects"
+        eyebrow="Production & ML Portfolio"
         title={
           <>
-            Products built on my own time.
+            Systems, Models &amp;
             <br />
-            Self-initiated, production-grade systems.
+            Production Architectures.
           </>
         }
-        description="Each project shipped as a working system outside of my day job — architecture, tradeoffs, and outcomes included."
+        description="9 calibrated machine learning pipelines, generative AI systems, and enterprise microservices — complete with empirical metrics, architecture tradeoffs, and verified code."
       />
       <section className="pb-10">
         <div className="mx-auto max-w-[1220px] px-6">
