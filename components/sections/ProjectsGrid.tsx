@@ -13,11 +13,11 @@ const accents = {
 };
 
 const FILTERS = [
-  { id: "all", label: "All Projects", icon: Sparkles },
-  { id: "rag", label: "RAG & LLMs", icon: Brain },
-  { id: "fastapi", label: "Python & FastAPI", icon: Code2 },
-  { id: "sql", label: "SQL & Analytics", icon: Database },
-  { id: "vision", label: "Vision & Research", icon: Video },
+  { id: "all", label: "All Work", icon: Sparkles },
+  { id: "datascience", label: "Data Science & ML", icon: Brain },
+  { id: "ai", label: "AI & GenAI Systems", icon: Sparkles },
+  { id: "analytics", label: "Analytics & BI", icon: Database },
+  { id: "software", label: "Backend Engineering", icon: Code2 },
 ] as const;
 
 export default function ProjectsGrid() {
@@ -30,22 +30,69 @@ export default function ProjectsGrid() {
       const techLower = p.tech.map((t) => t.toLowerCase());
       const slug = p.slug.toLowerCase();
 
-      if (activeFilter === "rag") {
+      if (activeFilter === "datascience") {
         return (
-          slug.includes("repomind") ||
-          slug.includes("property") ||
-          slug.includes("database") ||
-          techLower.some((t) => t.includes("groq") || t.includes("rag") || t.includes("qdrant"))
+          slug.includes("electricity") ||
+          slug.includes("delay-risk") ||
+          slug.includes("ab-test") ||
+          slug.includes("heart-rate") ||
+          techLower.some((t) =>
+            t.includes("lightgbm") ||
+            t.includes("xgboost") ||
+            t.includes("machine learning") ||
+            t.includes("conformal") ||
+            t.includes("scikit-learn") ||
+            t.includes("scipy")
+          )
         );
       }
-      if (activeFilter === "fastapi") {
-        return techLower.some((t) => t.includes("fastapi") || t.includes("python"));
+      if (activeFilter === "ai") {
+        return (
+          slug.includes("repomind") ||
+          slug.includes("database") ||
+          slug.includes("property") ||
+          slug.includes("chakra") ||
+          techLower.some((t) =>
+            t.includes("groq") ||
+            t.includes("rag") ||
+            t.includes("qdrant") ||
+            t.includes("llm") ||
+            t.includes("langchain") ||
+            t.includes("deepseek")
+          )
+        );
       }
-      if (activeFilter === "sql") {
-        return techLower.some((t) => t.includes("sql") || t.includes("postgresql") || t.includes("oracle") || t.includes("mysql") || t.includes("tableau") || t.includes("power bi") || t.includes("duckdb"));
+      if (activeFilter === "analytics") {
+        return (
+          slug.includes("delivery-analytics") ||
+          slug.includes("retail-sales") ||
+          slug.includes("electricity") ||
+          slug.includes("ab-test") ||
+          techLower.some((t) =>
+            t.includes("tableau") ||
+            t.includes("power bi") ||
+            t.includes("dax") ||
+            t.includes("duckdb") ||
+            t.includes("sql")
+          )
+        );
       }
-      if (activeFilter === "vision") {
-        return slug.includes("heart-rate") || techLower.some((t) => t.includes("opencv") || t.includes("fft") || t.includes("face"));
+      if (activeFilter === "software") {
+        return (
+          slug.includes("repomind") ||
+          slug.includes("database") ||
+          slug.includes("property") ||
+          slug.includes("electricity") ||
+          slug.includes("ab-test") ||
+          techLower.some((t) =>
+            t.includes("fastapi") ||
+            t.includes("docker") ||
+            t.includes("postgresql") ||
+            t.includes("redis") ||
+            t.includes("python") ||
+            t.includes("microservices")
+          )
+        );
       }
       return true;
     });

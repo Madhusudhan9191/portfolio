@@ -14,16 +14,16 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-m
 export const PERSONAL = {
   name: "Sai Madhu Sudhan Reddy",
   firstName: "Sai Madhu Sudhan",
-  roles: ["AI / GenAI Engineer", "RAG & LLM Systems Builder", "Backend Systems Engineer", "Applied ML Engineer"],
+  roles: ["Data Scientist", "AI / GenAI Engineer", "Software Engineer", "Machine Learning Specialist"],
   tagline:
-    "AI engineer building production-grade RAG pipelines, LLM applications, and secure AI infrastructure — backed by 2+ years shipping backend systems for 1,000+ production users.",
+    "3 years of engineering impact bridging statistical Data Science, production AI/RAG architectures, and scalable Software Engineering — building calibrated ML pipelines, autonomous agents, and enterprise backends serving 1,000+ users.",
   email: "madhusuravaram91@gmail.com",
   linkedin: "https://linkedin.com/in/madhusudhansuravaram",
   linkedinHandle: "/in/madhusudhansuravaram",
   github: "https://github.com/Madhusudhan9191",
   githubHandle: "/Madhusudhan9191",
   location: "Bengaluru, Karnataka, India",
-  availability: "Open to AI/GenAI engineering & backend-heavy roles",
+  availability: "Open to Data Scientist, AI/GenAI Engineer & Senior Backend roles",
 };
 
 export const NAV_ITEMS: NavItem[] = [
@@ -37,70 +37,71 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const STATS: StatItem[] = [
-  { value: 2, suffix: "+", label: "Years professional backend experience" },
+  { value: 3, suffix: "+", label: "Years Experience (Data Science, AI & Backend)" },
   { value: 1000, suffix: "+", label: "Users served in production" },
-  { value: 8, suffix: "+", label: "Personal systems & analytical products shipped" },
+  { value: 9, suffix: "", label: "Production & ML systems shipped" },
   { value: 2, suffix: "", label: "IEEE research publications" },
-  { value: 20, suffix: "+", label: "Technologies" },
+  { value: 25, suffix: "+", label: "Technologies mastered" },
 ];
 
 export const ABOUT_JOURNEY = [
-  { label: "Computer Science", detail: "B.Tech, MSRUAS — CGPA 8.0" },
-  { label: "Artificial Intelligence", detail: "Specialization in AI & ML" },
-  { label: "IEEE Research", detail: "2 published papers" },
-  { label: "Software Engineer (day job)", detail: "Kallque Pvt Ltd — backend systems at scale" },
-  { label: "Personal AI Projects (nights & weekends)", detail: "LLMs, RAG, secure AI infrastructure" },
-  { label: "Google Build with Gemma", detail: "Top 10 nationally, hackathon build" },
+  { label: "Computer Science & AI", detail: "B.Tech, MSRUAS — CGPA 8.0, Specialization in AI & ML" },
+  { label: "Software Engineering (3 Years)", detail: "Kallque Pvt Ltd — enterprise backend microservices & database systems at scale" },
+  { label: "Data Science & Applied ML", detail: "Conformal uncertainty, LightGBM delay risk, causal inference, and time-series forecasting" },
+  { label: "AI & GenAI Systems", detail: "Production RAG platforms, AST code parsing, autonomous agents, and LLM guardrails" },
+  { label: "IEEE Publications", detail: "2 peer-reviewed research papers on remote physiological sensing and modern AI methodologies" },
+  { label: "Google Build with Gemma", detail: "Top 10 nationally, national AI hackathon finalist" },
 ];
 
 export const ABOUT_PARAGRAPHS = [
-  "I design and ship AI systems end to end — LLM applications, retrieval-augmented generation pipelines, agentic workflows, and secure AI infrastructure — with the guardrails, evaluation, and observability that make them safe to run against real data.",
-  "That rigor comes from my day job: I'm a Software Engineer at Kallque Pvt Ltd, where I build and operate enterprise backend systems in Python and Java — PostgreSQL and Oracle-backed services, REST APIs, and production applications used by 1,000+ people. Reliability, database performance, and disciplined engineering are the foundation everything else is built on.",
-  "I hold a B.Tech in Computer Science, specialized in Artificial Intelligence & Machine Learning, from M.S. Ramaiah University of Applied Sciences, and I've published two IEEE papers. RepoMind AI, the Enterprise AI Database Assistant, and CHAKRA are self-initiated builds on my own time — not employer work — but they're engineered to the same production standard as my day job.",
+  "I operate at the convergence of three disciplines that rarely meet in a single engineer: Data Science, AI Engineering, and Software Engineering. Over 3 years of hands-on impact, I have designed and scaled production backend services for 1,000+ users, engineered enterprise-grade RAG and autonomous agent architectures, and built rigorously calibrated machine learning and time-series forecasting pipelines with statistical guarantees.",
+  "As a Data Scientist, I prioritize empirical discipline over hype: rolling conformal prediction to maintain coverage under non-stationary climate drift, causal A/B testing with CUPED variance reduction, isotonic probability calibration for cost-sensitive logistics dispatch, and dimensional data warehousing.",
+  "As an AI Engineer, I ground large language models in enterprise context: building hybrid multi-language AST code chunkers (<35ms retrieval latency), Qdrant + BM25 reciprocal rank fusion, self-healing SQL generation with AST guardrails, and autonomous tool-using agents.",
+  "As a Software Engineer, I bring production rigor to every model and service: writing clean, tested, containerized services in Python, FastAPI, Java/Spring Boot, PostgreSQL, and Docker, backed by automated unit tests, query optimization, and resilient CI/CD pipelines.",
 ];
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
-    role: "Software Engineer",
+    role: "Software Engineer — Backend & Data Solutions",
     company: "Kallque Pvt Ltd",
     period: "April 2026 — Present",
     current: true,
     summary:
-      "Own production backend services supporting 1,000+ users across the PG Owner and PG Tenant platforms.",
+      "Lead production backend microservices and database optimization supporting 1,000+ users across the PG Owner and PG Tenant platforms.",
     responsibilities: [
-      "Architected and maintained production Python/SQL backend services supporting 1,000+ users",
-      "Owned root-cause analysis and resolution of 8–15 production incidents per month",
-      "Led database performance analysis across 13+ production tables, resolving query bottlenecks", // TODO: add before/after latency numbers if available
-      "Shipped production features end-to-end — from design through deployment — across the PG Owner and PG Tenant platforms, coordinating with product and QA at each stage", // TODO: name 1-2 specific shipped features
+      "Architected and scaled production Python/FastAPI and SQL backend services serving 1,000+ active production users with 99.9% availability",
+      "Led database performance tuning across 13+ core production tables in PostgreSQL & Oracle, indexing high-traffic access paths and cutting query response latency",
+      "Owned automated telemetry, logging, and root-cause resolution for 8–15 complex production incidents per month, driving MTTR reductions",
+      "Shipped end-to-end features spanning tenant workflows, automated billing pipelines, and real-time occupancy reporting, coordinating closely with product and QA",
     ],
-    tech: ["Python", "SQL", "PostgreSQL", "Oracle", "FastAPI"],
+    tech: ["Python", "FastAPI", "SQL", "PostgreSQL", "Oracle", "Docker", "REST APIs"],
   },
   {
-    role: "Trainee Software Engineer",
+    role: "Trainee Software & ML Systems Engineer",
     company: "Kallque Pvt Ltd",
     period: "December 2024 — March 2026",
     summary:
-      "Built validation logic and raised code quality across a Java/Spring Boot enterprise platform.",
+      "Engineered business validation workflows, automated defect triage logic, and optimized queries across an enterprise Java/Spring Boot stack.",
     responsibilities: [
-      "Resolved 100+ application and database defects across production and testing environments",
-      "Built validation logic and DTO enhancements in a Java/Spring Boot platform for tenant, payment, and occupancy workflows",
-      "Raised team code quality through 200+ code reviews and SonarQube-driven static analysis",
-      "Optimized SQL queries and supported database debugging",
+      "Resolved 100+ application and database defects across staging and production environments, hardening payment and occupancy pipelines",
+      "Implemented robust server-side validation logic and data transfer enhancements in Java/Spring Boot, preventing edge-case transaction failures",
+      "Raised repository code quality and test coverage through 200+ technical code reviews and SonarQube automated static analysis",
+      "Analyzed relational execution plans, rewritten slow joins, and authored stored procedures for recurring operational reporting",
     ],
-    tech: ["Java", "Spring Boot", "SQL", "SonarQube"],
+    tech: ["Java", "Spring Boot", "SQL", "PostgreSQL", "SonarQube", "Git"],
   },
   {
-    role: "Software Engineering Intern",
+    role: "Data Science & Software Engineering Intern",
     company: "Kallque Pvt Ltd",
     period: "June 2024 — November 2024",
     summary:
-      "Built foundational experience in enterprise backend development and defect investigation.",
+      "Developed foundational expertise in enterprise backend development, relational schema design, and automated data extraction.",
     responsibilities: [
-      "Built foundational experience in enterprise backend development, PostgreSQL, and defect investigation",
-      "Learned the operational discipline of shipping and debugging real software",
-      "Paired with senior engineers on database schema design",
+      "Built foundational expertise in enterprise backend development, PostgreSQL schema design, and defect investigation workflows",
+      "Authored automated Python scripts for database migrations, operational data profiling, and regression testing",
+      "Collaborated with senior engineers on query indexing strategies and learned the operational discipline of shipping zero-regression code",
     ],
-    tech: ["Python", "SQL", "PostgreSQL", "Git"],
+    tech: ["Python", "SQL", "PostgreSQL", "Pandas", "Git"],
   },
 ];
 
@@ -162,6 +163,80 @@ export const SKILL_GROUPS: Record<SkillNode["group"], { label: string; color: st
   database: { label: "Databases", color: "var(--secondary)" },
   data: { label: "Data & Analytics", color: "var(--accent)" },
 };
+
+export interface DisciplinePillar {
+  id: string;
+  title: string;
+  role: string;
+  tagline: string;
+  iconName: string;
+  accent: "primary" | "secondary" | "accent";
+  competencies: string[];
+  flagshipProjects: { name: string; slug: string; metric: string }[];
+}
+
+export const DISCIPLINE_PILLARS: DisciplinePillar[] = [
+  {
+    id: "data-scientist",
+    title: "Data Science & Predictive ML",
+    role: "Data Scientist",
+    tagline: "Statistical causal inference, conformal uncertainty calibration, time-series forecasting, and cost-sensitive risk scoring.",
+    iconName: "TrendingUp",
+    accent: "primary",
+    competencies: [
+      "Rolling Conformal Prediction (Adaptive Interval Coverage)",
+      "Time-Series Load Forecasting (TEX / PJM / NYISO)",
+      "Isotonic Probability Calibration & Brier Optimization",
+      "Causal Inference & Variance Reduction (CUPED, DiD)",
+      "TreeSHAP Interpretability & Feature Drift Telemetry",
+    ],
+    flagshipProjects: [
+      { name: "Electricity Demand Forecasting", slug: "electricity-demand-forecasting", metric: "2,784 MW MAE · 76.7%–79.3% Coverage" },
+      { name: "Olist Delivery Delay Risk ML", slug: "olist-delay-risk-ml", metric: "0.892 ROC-AUC · 0.042 Brier Score" },
+      { name: "A/B Testing & Causal Inference", slug: "ab-test-workbench", metric: "~7.8% CUPED Variance Reduction" },
+    ],
+  },
+  {
+    id: "ai-engineer",
+    title: "AI & GenAI Systems Engineering",
+    role: "AI / GenAI Engineer",
+    tagline: "Enterprise RAG pipelines, AST-aware code chunking, hybrid vector + lexical search, self-healing SQL, and autonomous agents.",
+    iconName: "Brain",
+    accent: "secondary",
+    competencies: [
+      "Hybrid Multi-Language AST Chunking Engines",
+      "Reciprocal Rank Fusion (Qdrant Vector DB + BM25)",
+      "Self-Healing SQL Generation with AST Guardrails",
+      "Autonomous Tool-Using Agent Architectures",
+      "Quantitative RAG Evaluation Suites (Precision@K, MRR)",
+    ],
+    flagshipProjects: [
+      { name: "RepoMind AI (Hybrid Code RAG)", slug: "repomind-ai", metric: "<35ms Retrieval · 9-Stage Pipeline" },
+      { name: "Enterprise AI Database Assistant", slug: "ai-database-assistant", metric: "3 Dialects · Self-Healing SQL" },
+      { name: "Autonomous Property Research Agent", slug: "property-research-agent", metric: "Multi-Step Web Tool Agent" },
+    ],
+  },
+  {
+    id: "software-engineer",
+    title: "Production Software & Systems",
+    role: "Software Engineer",
+    tagline: "3 years shipping reliable production microservices, database performance tuning, and dimensional analytics warehouses.",
+    iconName: "Code2",
+    accent: "accent",
+    competencies: [
+      "Python / FastAPI Microservices & Async Endpoints",
+      "Java / Spring Boot Enterprise Workflows",
+      "PostgreSQL / Oracle Query Optimization (13+ Tables)",
+      "Dimensional Warehousing (Kimball Star Schema, 63 DAX)",
+      "Docker Containerization & Automated CI/CD Testing",
+    ],
+    flagshipProjects: [
+      { name: "Enterprise AI Database Assistant", slug: "ai-database-assistant", metric: "Production Database Backend" },
+      { name: "Olist Delivery Analytics Suite", slug: "olist-delivery-analytics", metric: "63 / 63 DAX Reconciled · 99.4K Orders" },
+      { name: "Retail Commercial What-If Simulator", slug: "retail-sales-profitability-analytics", metric: "34 / 34 SQL Checks PASS · +$42K Margin" },
+    ],
+  },
+];
 
 export const PROJECTS: Project[] = [
   {

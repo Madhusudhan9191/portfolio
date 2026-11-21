@@ -11,12 +11,12 @@ export default function ExperiencePage() {
         eyebrow="Experience"
         title={
           <>
-            Two years, three roles,
+            Three years of engineering impact across
             <br />
-            one company that kept betting on me.
+            Data Science, AI Systems & Production Software.
           </>
         }
-        description="Click any role to expand responsibilities, technologies, and scope."
+        description="A progression from foundational backend systems to enterprise microservices, applied machine learning, and generative AI platforms. Click any role to expand responsibilities and impact."
       />
       <section className="pb-32">
         <div className="mx-auto max-w-[1220px] px-6">
